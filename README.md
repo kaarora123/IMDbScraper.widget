@@ -17,3 +17,20 @@ pip install -r requirements.txt
 it to your widgets folder.
 
 
+### Usage
+
+Hold down ```⌘``` and mouse over the widget to scroll and select movies. Selected movies will have a green background.
+
+<p align="center">
+  <img src="https://github.com/kaarora123/IMDbScraper.widget/blob/master/screenshot.png?raw=true"/>
+</p>
+
+You can change the styling of the widget in [index.coffee](https://github.com/kaarora123/IMDbScraper.widget/blob/master/IMDbScraper.widget/index.coffee).
+
+<hr/>
+
+Please feel free to leave any suggestions or report any issues.
+
+Thanks!
+
+
