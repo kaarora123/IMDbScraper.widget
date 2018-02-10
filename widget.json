@@ -1,0 +1,6 @@
+{
+	"name": "IMDbScraper",
+	"description": "Displays in-theater/coming-soon movies from IMDb and stores user-selected movies in local storage.",
+	"author": "Kashish Arora",
+	"email": "kashisharora99@gmail.com"
+}
