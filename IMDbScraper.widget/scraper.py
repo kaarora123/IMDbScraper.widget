@@ -25,7 +25,6 @@ class Scraper(object):
         """  
         self.movies = []
         
-    
     def parse_html(self, url):
         """
         Requests the content of the webpage using a get request and stores the response. 
@@ -102,21 +101,15 @@ class InTheatersScraper(Scraper):
         url: string, the url to collect data from
         
         """
-        Scraper.__init__(self)
+        super(InTheatersScraper, self).__init__()
         self.url = "http://www.imdb.com/movies-in-theaters/?ref_=cs_inth"
         
-    def parse_html(self):
-        """
-        Calls the parent class parse_html method with given url.
-        """
-        return Scraper.parse_html(self, self.url)
-    
-    def scrape(self):
+    def run_scrape(self):
         """
         Calls the parent class scrape method with a movies_set object returned by parse_html.
         """
-        movies_set = self.parse_html()
-        Scraper.scrape(self, movies_set)
+        movies_set = self.parse_html(self.url)
+        self.scrape(movies_set)
     
     
 class ComingSoonScraper(Scraper):
@@ -133,7 +126,7 @@ class ComingSoonScraper(Scraper):
         month_range: int, how many months after the current month to collect data for
         
         """
-        Scraper.__init__(self)
+        super(ComingSoonScraper, self).__init__()
         self.urls =  []
         self.month_range = month_range
         
@@ -175,7 +168,7 @@ class ComingSoonScraper(Scraper):
         
         
     
-    def scrape(self):
+    def run_scrape(self):
         """
         For each of the urls in self.urls, parses the html and collects movie data using
         parent class scrape method.
@@ -184,11 +177,11 @@ class ComingSoonScraper(Scraper):
         self.createUrlList()
         for i in self.urls:
             movies_set = self.parse_html(i)
-            Scraper.scrape(self, movies_set)
+            self.scrape(movies_set)
             
     
 
-def run_scrape():
+def main():
     """
     Creates an instance of InTheatersScraper and ComingSoonScraper and calls their scrape methods to 
     create a movies object list. Appends a string of all the movie objects to a new
@@ -198,8 +191,8 @@ def run_scrape():
     in_theaters = InTheatersScraper()
     coming_soon = ComingSoonScraper()
     
-    in_theaters.scrape()
-    coming_soon.scrape()
+    in_theaters.run_scrape()
+    coming_soon.run_scrape()
     
     movies = set(in_theaters.get_movies() + coming_soon.get_movies())
     
@@ -213,4 +206,4 @@ def run_scrape():
         
 
 
-run_scrape()
+main()
