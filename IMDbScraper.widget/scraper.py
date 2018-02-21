@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-from requests import get
+from requests import get, ConnectionError
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import *
 import datetime
